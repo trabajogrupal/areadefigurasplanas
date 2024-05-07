@@ -1,0 +1,151 @@
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(img/rudas.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  background-color: #f0f0f0;
+  color: #ffffff;
+}
+
+h1 {
+  color: white; 
+}
+
+h2 {
+  color: chartreuse;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  width: 200px;
+  height: 280px;
+  padding: 50px;
+  border: 2px solid rgb(5, 25, 26);
+  background: linear-gradient(to right, #330157, rgb(2, 88, 101), #00DDFF);
+  margin: 20px;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #260388;  
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.boton{
+  background-color: black; 
+   
+}
+
+
+button:hover {
+  background: linear-gradient(to right, yellow, #620017, #03515a);
+}
+
+p {
+  margin-top: 10px;
+}
+
+/* Animaciones de burbujas */
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bubbles span {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #4fc3dc;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #4dc3dc44, 0 0 50px #4dc3dc, 0 0 100px #4dc3dc;
+  animation: animate 15s linear infinite;
+  animation-duration: calc(125s / var(--i));
+}
+
+.bubbles span:nth-child(even) {
+  background: #ff2d75;
+  box-shadow: 0 0 0 10px #ff2d7544, 0 0 50px #ff2d75, 0 0 100px #ff2d75;
+}
+
+@keyframes animate {
+  0% {
+      transform: translate(100vw, 100vh) scale(0);
+  }
+  100% {
+      transform: translate(-100vw, -100vh) scale(2);
+  }
+}
+
+/* Estilos para la ventana emergente */
+.ventana-emergente {
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.contenido-ventana {
+  text-align: center;
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Estilos para el overlay */
+#overlay, 
+#overlay-2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Asegura que la ventana flotante esté por encima de todo */
+}
+
+#overlay-content {
+  background: linear-gradient(to right, rgb(3, 227, 234), #1c6686 , #15daf0);
+  border-radius: 10px;
+  text-align: center;
+}

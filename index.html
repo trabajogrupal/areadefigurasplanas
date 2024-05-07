@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Calcular Perímetros</title>
+</head>
+<body>
+  <h1>Calcular Áreas y el Perimetro de las Figuras Planas</h1>
+
+<div class="container"> 
+    <!-- Sección para calcular área de un círculo -->
+    <div class="section">
+        <h2>Área de un Círculo</h2>
+        <label for="radius">Radio:</label>
+        <input type="text" id="radius" placeholder="Ingresa el radio" oninput="validateInput(this)">
+        <button onclick="calcularAreaCirculo()">Calcular Área</button>
+    </div>
+
+    <!-- Sección para calcular área de un triángulo -->
+    <div class="section">
+        <h2>Área de un Triángulo</h2>
+        <label for="base">Base:</label>
+        <input type="text" id="base" placeholder="Ingresa la base" oninput="validateInput(this)">
+        <label for="height">Altura:</label>
+        <input type="text" id="height" placeholder="Ingresa la altura" oninput="validateInput(this)">
+        <button onclick="calcularAreaTriangulo()">Calcular Área</button>
+    </div>
+
+    <!-- Sección para calcular área de un rectángulo -->
+    <div class="section">
+        <h2>Área de un Rectángulo</h2>
+        <label for="lengthRect">Longitud:</label>
+        <input type="text" id="lengthRect" placeholder="Ingresa la longitud" oninput="validateInput(this)">
+        <label for="widthRect">Ancho:</label>
+        <input type="text" id="widthRect" placeholder="Ingresa el ancho" oninput="validateInput(this)">
+        <button onclick="calcularAreaRectangulo()">Calcular Área</button>
+    </div>
+
+    <!-- Sección para calcular área de un cuadrado -->
+    <div class="section">
+        <h2>Área de un Cuadrado</h2>
+        <label for="sideSquare">Lado:</label>
+        <input type="text" id="sideSquare" placeholder="Ingresa la longitud del lado" oninput="validateInput(this)">
+        <button onclick="calcularAreaCuadrado()">Calcular Área</button>
+    </div>
+</div>
+
+<!-- Overlay para mostrar el mensaje de error -->
+<div id="overlay">
+    <div id="overlay-content">
+        <h4 id="errorMessage">Por favor ingresa un valor válido</h4>
+        <button class="boton" id="returnButton" onclick="hideOverlay()">OK</button>
+    </div>
+</div>
+
+
+<div class="container"> 
+    <!-- Sección para calcular perímetro de un círculo -->
+    <div class="section">
+        <h2>Perímetro de un Círculo</h2>
+        <label for="radiusPerimeter">Radio:</label>
+        <input type="text" id="radiusPerimeter" placeholder="Ingresa el radio" oninput="validateInput(this)">
+        <button onclick="calcularPerimetroCirculo()">Calcular Perímetro</button>
+    </div>
+
+    <!-- Sección para calcular perímetro de un triángulo -->
+    <div class="section">
+        <h2>Perímetro de un Triángulo</h2>
+        <label for="side1">Lado 1:</label>
+        <input type="text" id="side1" placeholder="Ingresa la longitud del lado 1" oninput="validateInput(this)">
+        <label for="side2">Lado 2:</label>
+        <input type="text" id="side2" placeholder="Ingresa la longitud del lado 2" oninput="validateInput(this)">
+        <label for="side3">Lado 3:</label>
+        <input type="text" id="side3" placeholder="Ingresa la longitud del lado 3" oninput="validateInput(this)">
+        <button onclick="calcularPerimetroTriangulo()">Calcular Perímetro</button>
+    </div>
+
+    <!-- Sección para calcular perímetro de un rectángulo -->
+    <div class="section">
+        <h2>Perímetro de un Rectángulo</h2>
+        <label for="lengthRectPerimeter">Longitud:</label>
+        <input type="text" id="lengthRectPerimeter" placeholder="Ingresa la longitud" oninput="validateInput(this)">
+        <label for="widthRectPerimeter">Ancho:</label>
+        <input type="text" id="widthRectPerimeter" placeholder="Ingresa el ancho" oninput="validateInput(this)">
+        <button onclick="calcularPerimetroRectangulo()">Calcular Perímetro</button>
+    </div>
+
+    <!-- Sección para calcular perímetro de un cuadrado -->
+    <div class="section">
+        <h2>Perímetro de un Cuadrado</h2>
+        <label for="sideSquarePerimeter">Lado:</label>
+        <input type="text" id="sideSquarePerimeter" placeholder="Ingresa la longitud del lado" oninput="validateInput(this)">
+        <button onclick="calcularPerimetroCuadrado()">Calcular Perímetro</button>
+    </div>
+</div>
+
+
+
+<script>
+  const overlay = document.getElementById('overlay');
+    const returnButton = document.getElementById('returnButton');
+
+    returnButton.addEventListener('click', hideOverlay);
+
+    function hideOverlay() {
+        overlay.style.display = 'none';
+    }
+
+    // Function to validate input and show overlay if necessary
+    function validateInput(input) {
+        const regex = /^[0-9]*\.?[0-9]*$/; // Regex to allow decimal numbers
+
+        if (!regex.test(input.value)) {
+            overlay.style.display = 'flex';
+            document.getElementById('errorMessage').style.display = 'block';
+            input.value = ''; // Clear input value if it contains non-numeric characters
+        } else {
+            overlay.style.display = 'none'; // Hide error message when value is valid
+        }
+    }
+
+    // Function to calculate perimeter of a circle
+    function calcularPerimetroCirculo() {
+        const radiusValue = document.getElementById('radiusPerimeter').value;
+        const perimeter = 2 * Math.PI * radiusValue;
+        alert(`El perímetro del círculo es: ${perimeter.toFixed(2)}`);
+    }
+
+    // Function to calculate perimeter of a triangle
+    function calcularPerimetroTriangulo() {
+        const side1Value = document.getElementById('side1').value;
+        const side2Value = document.getElementById('side2').value;
+        const side3Value = document.getElementById('side3').value;
+        const perimeter = parseFloat(side1Value) + parseFloat(side2Value) + parseFloat(side3Value);
+        alert(`El perímetro del triángulo es: ${perimeter.toFixed(2)}`);
+    }
+
+    // Function to calculate perimeter of a rectangle
+    function calcularPerimetroRectangulo() {
+        const lengthRectValue = document.getElementById('lengthRectPerimeter').value;
+        const widthRectValue = document.getElementById('widthRectPerimeter').value;
+        const perimeter = 2 * (parseFloat(lengthRectValue) + parseFloat(widthRectValue));
+        alert(`El perímetro del rectángulo es: ${perimeter.toFixed(2)}`);
+    }
+
+    // Function to calculate perimeter of a square
+    function calcularPerimetroCuadrado() {
+        const sideSquareValue = document.getElementById('sideSquarePerimeter').value;
+        const perimeter = 4 * sideSquareValue;
+        alert(`El perímetro del cuadrado es: ${perimeter.toFixed(2)}`);
+    }
+
+    // Function to calculate area of a circle
+    function calcularAreaCirculo() {
+        const radiusValue = document.getElementById('radius').value;
+        const area = Math.PI * radiusValue * radiusValue;
+        alert(`El área del círculo es: ${area.toFixed(2)}`);
+    }
+
+    function calcularAreaTriangulo() {
+        const baseValue = document.getElementById('base').value;
+        const heightValue = document.getElementById('height').value;
+        const area = 0.5 * baseValue * heightValue;
+        alert(`El área del triángulo es: ${area.toFixed(2)}`);
+    }
+
+    function calcularAreaRectangulo() {
+        const lengthRectValue = document.getElementById('lengthRect').value;
+        const widthRectValue = document.getElementById('widthRect').value;
+        const area = lengthRectValue * widthRectValue;
+        alert(`El área del rectángulo es: ${area.toFixed(2)}`);
+    }
+
+    function calcularAreaCuadrado() {
+        const sideSquareValue = document.getElementById('sideSquare').value;
+        const area = sideSquareValue * sideSquareValue;
+        alert(`El área del cuadrado es: ${area.toFixed(2)}`);
+    }
+</script>
+
+</body>
+</html>
